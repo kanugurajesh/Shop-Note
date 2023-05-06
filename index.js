@@ -1,16 +1,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, ref, set, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 const appSettings = {
     databaseURL: "https://shopping-app-66686-default-rtdb.asia-southeast1.firebasedatabase.app"
 }
 
+const databaseName = "shopping"
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
-const dbRef = ref(database, "shopping");
+const dbRef = ref(database, databaseName);
 const adder = document.getElementById("shopping-list")
-let booksSet = new Set();
-
+let booksData = new Set();
 function clearList() {
     adder.innerHTML = "";
 }
@@ -19,25 +19,34 @@ onValue(dbRef, (snapshot) => {
     // store all the snapchat values in a set
     if (snapshot.val() !== null) {
         // store all the snapshot values in a set
-        booksSet = new Set(Object.values(snapshot.val()));
+        booksData = new Set(Object.entries(snapshot.val()));
     }
-    // booksSet = new Set(Object.values(snapshot.val()));
-
     clearList();
 
-    // iterate over the set and append each item to the shopping list
-    booksSet.forEach((book) => {
+    booksData.forEach((book) => {
         appendItemToShoppingList(book);
     });
 });
 
 function appendItemToShoppingList(item) {
     let li = document.createElement("li");
-    // li.setAttribute("value", 1)
-    li.textContent = item;
+    li.setAttribute("value", item[0])
+    li.textContent = item[1];
+    // add a double click event listener to the item
+
+    li.addEventListener("dblclick", function () {
+        // get the value attribute of the item
+        let value = li.getAttribute("value");
+        // console.log(value)
+        let exactLocationOfItem = ref(database, databaseName + "/" + value);
+        // remove(exactLocationOfItem);
+        remove(exactLocationOfItem);
+        // reload the database
+        location.reload();
+    });
+
     adder.appendChild(li);
 }
-
 
 let addtocart = document.getElementById("add-button");
 
@@ -45,11 +54,14 @@ addtocart.addEventListener("click", function () {
     // check if the item is already in the list
     let input = document.getElementById("input-field");
 
-    if (booksSet.has(input.value)) {
-        alert("Item already in the list");
-        input.value = "";
-        return;
+    for (let book of booksData) {
+        if (book[1] === input.value) {
+            alert("Item already in the list");
+            input.value = "";
+            return;
+        }
     }
+
     push(dbRef, input.value)
     input.value = "";
 });

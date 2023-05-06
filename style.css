@@ -143,3 +143,13 @@ ul li {
     border-radius: 8px;
     padding: 10px;
 }
+
+li:hover {
+    background-color: #FFECC7;
+    color: brown;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #432000;
+}
