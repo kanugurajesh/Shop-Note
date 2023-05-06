@@ -10,9 +10,9 @@ body {
 }
 
 img {
-    width: 90%;
-    height: 90%;
-    margin: -8rem auto;
+    width: 200px;
+    height: 200px;
+    /* margin: -8rem auto; */
 }
 
 body {
@@ -26,7 +26,7 @@ body {
 }
 
 .container {
-    padding: 2rem;
+    /* padding: 2rem; */
     width: 320px;
     height: 720px;
     display: flex;
@@ -34,7 +34,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     border-radius: 5%;
     background-color: #eff2f4;
     max-width: 320px;
