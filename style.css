@@ -2,17 +2,12 @@ html,
 body {
     margin: 0;
     padding: 0;
-    /* 
-    font-family: 'Rubik', sans-serif;
-    background-color: #EEF0F4; */
-
     box-sizing: border-box;
 }
 
 img {
     width: 200px;
     height: 200px;
-    /* margin: -8rem auto; */
 }
 
 body {
@@ -26,7 +21,6 @@ body {
 }
 
 .container {
-    /* padding: 2rem; */
     width: 320px;
     height: 720px;
     display: flex;
@@ -34,7 +28,6 @@ body {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    /* border: 5px solid black; */
     border-radius: 5%;
     background-color: #eff2f4;
     max-width: 320px;
