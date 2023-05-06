@@ -53,7 +53,10 @@ let addtocart = document.getElementById("add-button");
 addtocart.addEventListener("click", function () {
     // check if the item is already in the list
     let input = document.getElementById("input-field");
-
+    if (input.value === "") {
+        alert("Please enter a value");
+        return;
+    }
     for (let book of booksData) {
         if (book[1] === input.value) {
             alert("Item already in the list");
