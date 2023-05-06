@@ -92,6 +92,7 @@ body {
     padding: 0;
     font-family: 'Rubik', sans-serif;
     background-color: #EEF0F4;
+    user-select: none;
 }
 
 .container {
