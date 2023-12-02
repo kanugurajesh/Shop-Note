@@ -22,3 +22,7 @@ Shop Note is your ultimate, user-friendly solution for keeping track of your gro
 🚀 Launch the application and start adding items to your shopping list.
 
 ✌️ Double-tap to delete items you've already picked up.
+
+## Screenshots
+
+![Screenshot 2023-12-02 232833](https://github.com/kanugurajesh/Shop-Note/assets/120458029/0d96e633-6b62-4555-8db3-2c4042a1b151)
